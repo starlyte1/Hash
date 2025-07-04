@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Receive Page</title>
+<style>
+body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+button { margin: 0.5rem; padding: 0.5rem; font-size: 1rem; }
+</style>
+</head>
+<body>
+<h2>Receive Page</h2>
+<div id="incomingCall">Waiting for call...</div>
+<button id="endCallButton" style="display: none;">End Call</button>
+<script>
+const incomingCall = document.getElementById('incomingCall');
+const endCallButton = document.getElementById('endCallButton');
+
+const number = sessionStorage.getItem('currentCall');
+if(number) {
+    incomingCall.textContent = `Incoming call from: ${number}`;
+    endCallButton.style.display = 'block';
+} else {
+    incomingCall.textContent = 'No incoming call.';
+}
+
+endCallButton.addEventListener('click', () => {
+    sessionStorage.removeItem('currentCall');
+    window.location.href = 'index.html';
+});
+</script>
+</body>
+</html>
