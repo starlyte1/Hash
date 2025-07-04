@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dial Page</title>
+<style>
+body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+input, button { margin: 0.5rem; padding: 0.5rem; font-size: 1rem; }
+</style>
+</head>
+<body>
+<h2>Dial Page</h2>
+<input type="text" id="dialNumber" placeholder="Enter number to call" />
+<button id="callButton">Call</button>
+<script>
+const callButton = document.getElementById('callButton');
+const dialInput = document.getElementById('dialNumber');
+
+callButton.addEventListener('click', () => {
+    const number = dialInput.value.trim();
+    if(number) {
+        sessionStorage.setItem('currentCall', number);
+        window.location.href = 'receive.html';
+    } else {
+        alert('Please enter a number to call.');
+    }
+});
+</script>
+</body>
+</html>
